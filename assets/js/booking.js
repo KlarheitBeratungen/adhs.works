@@ -126,7 +126,7 @@
   function renderArea() {
     clear();
     root.appendChild(steps(0));
-    root.appendChild(el('p', 'area-lead', 'Worum geht es? Wählen Sie Ihr Anliegen – danach sehen Sie freie Termine.'));
+    root.appendChild(el('p', 'area-lead', 'Worum geht es? Wähle dein Anliegen – danach siehst du freie Termine.'));
     var grid = el('div', 'area-grid');
     AREAS.forEach(function (a) {
       var b = el('button', 'area-btn');
@@ -179,7 +179,7 @@
       week.appendChild(col);
     }
     root.appendChild(week);
-    root.appendChild(el('p', 'booking-hint', 'Tippen Sie auf eine Uhrzeit. Kein passender Termin dabei? Mit › sehen Sie die nächste Woche.'));
+    root.appendChild(el('p', 'booking-hint', 'Tippe auf eine Uhrzeit. Kein passender Termin dabei? Mit › siehst du die nächste Woche.'));
   }
 
   function renderForm() {
@@ -197,22 +197,20 @@
     var form = el('form', 'booking-form');
     form.noValidate = true;
     form.innerHTML =
-      '<div class="field"><label for="bk-anrede">Anrede</label>' +
-        '<select id="bk-anrede"><option value="">Bitte wählen …</option><option>Frau</option><option>Herr</option><option>Divers</option><option value="Keine Angabe">Keine Angabe</option></select></div>' +
       '<div class="field"><label for="bk-name">Name *</label><input id="bk-name" type="text" autocomplete="name" />' +
-        '<div class="err">Bitte geben Sie Ihren Namen an.</div></div>' +
+        '<div class="err">Bitte gib deinen Namen an.</div></div>' +
       '<div class="field"><label for="bk-mail">E-Mail *</label><input id="bk-mail" type="email" autocomplete="email" />' +
-        '<div class="err">Bitte geben Sie eine gültige E-Mail-Adresse an.</div></div>' +
+        '<div class="err">Bitte gib eine gültige E-Mail-Adresse an.</div></div>' +
       '<div class="field"><label for="bk-tel">Telefon <span class="opt">(optional)</span></label><input id="bk-tel" type="tel" autocomplete="tel" maxlength="40" placeholder="Für Rückfragen und das Erstgespräch" /></div>' +
-      '<div class="field"><label for="bk-msg">Was möchten Sie angehen? <span class="opt">(optional)</span></label>' +
+      '<div class="field"><label for="bk-msg">Was möchtest du angehen? <span class="opt">(optional)</span></label>' +
         '<textarea id="bk-msg" placeholder="Ein, zwei Stichworte reichen."></textarea>' +
         '<p class="field-hint">Bitte keine Angaben zu Gesundheit, Befunden oder Diagnosen. Coaching ist keine Therapie.</p></div>' +
       '<div class="field"><label class="consent" for="bk-consent"><input id="bk-consent" type="checkbox" />' +
         '<span>Ich bin einverstanden, dass meine Angaben – auch solche, die Rückschlüsse auf meine Gesundheit zulassen – zur Bearbeitung meiner Anfrage verarbeitet werden. Widerruf jederzeit per E-Mail. *</span></label>' +
-        '<div class="err">Bitte bestätigen Sie die Einwilligung, damit ich Ihre Anfrage bearbeiten darf.</div></div>' +
+        '<div class="err">Bitte bestätige die Einwilligung, damit ich deine Anfrage bearbeiten darf.</div></div>' +
       '<div class="hp" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"><label>Website (bitte frei lassen)<input type="text" id="bk-website" tabindex="-1" autocomplete="off" /></label></div>' +
       '<div class="booking-actions"><button type="submit" class="btn btn-primary">Terminanfrage senden</button></div>' +
-      '<p class="booking-hint">Unverbindliche Anfrage – ich bestätige Ihren Termin zeitnah per E-Mail.<br />Ihre Angaben verwende ich ausschließlich zur Terminvereinbarung und gebe sie nicht an Dritte weiter. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>';
+      '<p class="booking-hint">Unverbindliche Anfrage – ich bestätige deinen Termin zeitnah per E-Mail.<br />Deine Angaben verwende ich ausschließlich zur Terminvereinbarung und gebe sie nicht an Dritte weiter. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>';
     form.addEventListener('submit', function (ev) { ev.preventDefault(); submitBooking(form); });
     var cb = form.querySelector('#bk-consent');
     cb.addEventListener('change', function () { if (cb.checked) mark(cb, true); });
@@ -232,7 +230,6 @@
       'Terminanfrage für ein kostenloses Erstgespräch\n\n' +
       'Anliegen: ' + p.area + '\n' +
       'Wunschtermin: ' + p.when + '\n\n' +
-      'Anrede: ' + (p.anrede || '—') + '\n' +
       'Name: ' + p.name + '\n' +
       'E-Mail: ' + p.email + '\n' +
       'Telefon: ' + (p.phone || '—') + '\n\n' +
@@ -256,7 +253,6 @@
     var p = {
       area:    state.area.label,
       when:    when,
-      anrede:  form.querySelector('#bk-anrede').value,
       name:    name.value.trim(),
       email:   mail.value.trim(),
       phone:   form.querySelector('#bk-tel').value.trim(),
@@ -287,8 +283,8 @@
     btn.disabled = false; btn.textContent = label;
     var box = el('div', 'send-error');
     box.style.cssText = 'margin-top:14px;padding:12px 14px;border-radius:10px;background:#fdecea;color:#8f1d16;font-size:.95rem;line-height:1.5;';
-    box.innerHTML = 'Die Anfrage ließ sich gerade nicht senden. Bitte versuchen Sie es noch einmal – ' +
-      'oder <a href="' + buildMailtoHref(p) + '" style="color:inherit;font-weight:700;">senden Sie sie direkt per E-Mail</a>.';
+    box.innerHTML = 'Die Anfrage ließ sich gerade nicht senden. Bitte versuch es noch einmal – ' +
+      'oder <a href="' + buildMailtoHref(p) + '" style="color:inherit;font-weight:700;">schick sie direkt per E-Mail</a>.';
     form.appendChild(box);
   }
 
@@ -297,9 +293,9 @@
     var c = el('div', 'booking-confirm');
     c.innerHTML =
       '<div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>' +
-      '<h3>Anfrage gesendet – danke!</h3>' +
-      '<p style="color:var(--ink-soft);max-width:470px;margin:0 auto 1rem;">Ihre unverbindliche Anfrage für <strong>' + when + '</strong> ist bei mir eingegangen. Ich melde mich zeitnah per E-Mail, um den Termin zu bestätigen.</p>' +
-      '<p class="booking-hint">Fragen? Schreiben Sie mir jederzeit an <a href="mailto:' + CONFIG.email + '">' + CONFIG.email + '</a>.</p>';
+      '<h3>Danke, deine Anfrage ist da!</h3>' +
+      '<p style="color:var(--ink-soft);max-width:470px;margin:0 auto 1rem;">Deine unverbindliche Anfrage für <strong>' + when + '</strong> ist bei mir eingegangen. Ich freue mich auf unser Gespräch und melde mich zeitnah per E-Mail, um den Termin zu bestätigen.</p>' +
+      '<p class="booking-hint">Fragen? Schreib mir jederzeit an <a href="mailto:' + CONFIG.email + '">' + CONFIG.email + '</a>.</p>';
     root.appendChild(c);
   }
 

@@ -68,7 +68,6 @@ $body =
   "----------------------------------\n\n" .
   "Anliegen:      " . $area . "\n" .
   "Wunschtermin:  " . $when . "\n\n" .
-  "Anrede:        " . ($anrede !== '' ? $anrede : '—') . "\n" .
   "Name:          " . $name . "\n" .
   "E-Mail:        " . $email . "\n" .
   "Telefon:       " . ($phone !== '' ? $phone : '—') . "\n\n" .
@@ -98,17 +97,17 @@ $AREAS   = array('Erstgespräch Coaching');
 $WHEN_RE = '/^(Montag|Dienstag|Mittwoch|Donnerstag|Freitag), ([1-9]|[12][0-9]|3[01])\. (Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember) [0-9]{4}, [0-2][0-9]:[0-5][0-9]–[0-2][0-9]:[0-5][0-9] Uhr \([0-9]{1,3} Min\)$/u';
 
 if ($sent && in_array($area, $AREAS, true) && preg_match($WHEN_RE, $when) === 1) {
-  // Den Namen nur in die Anrede übernehmen, wenn er wie ein Name aussieht (keine Links o. Ä.)
+  // Den Namen nur in die Begrüßung übernehmen, wenn er wie ein Name aussieht (keine Links o. Ä.)
   $nameOk = preg_match('/^[\p{L}\p{M}][\p{L}\p{M} .\'’-]{0,79}$/u', $name) === 1 && preg_match('/\.\p{L}/u', $name) !== 1;
   $bodyConfirm =
-    ($nameOk ? 'Guten Tag ' . $name . ',' : 'Guten Tag,') . "\n\n" .
-    "vielen Dank für Ihre Anfrage, sie ist bei mir eingegangen:\n\n" .
+    ($nameOk ? 'Hallo ' . $name . ',' : 'Hallo,') . "\n\n" .
+    "danke für deine Anfrage, sie ist bei mir eingegangen:\n\n" .
     "Anliegen:      " . $area . "\n" .
     "Wunschtermin:  " . $when . "\n\n" .
-    "Die Anfrage ist unverbindlich. Ich melde mich zeitnah, um den Termin zu bestätigen. " .
-    "Wenn etwas nicht passt, antworten Sie einfach auf diese E-Mail.\n\n" .
+    "Ich freue mich auf unser Gespräch! Die Anfrage ist unverbindlich, ich melde mich zeitnah, um den Termin zu bestätigen. " .
+    "Wenn etwas nicht passt, antworte einfach auf diese E-Mail.\n\n" .
     "Herzliche Grüße\n" .
-    "Markus Wagner\n";
+    "Markus\n";
 
   $headersConfirm = array();
   $headersConfirm[] = 'From: ' . $FROM_NAME . ' <' . $FROM_ADDR . '>';
@@ -117,7 +116,7 @@ if ($sent && in_array($area, $AREAS, true) && preg_match($WHEN_RE, $when) === 1)
   $headersConfirm[] = 'Content-Transfer-Encoding: 8bit';
   $headersConfirm[] = 'Auto-Submitted: auto-generated';   // verhindert Abwesenheitsnotizen als Antwort
 
-  $subjConfirm = 'Ihre Terminanfrage für ein Erstgespräch';
+  $subjConfirm = 'Deine Terminanfrage für ein Erstgespräch';
   if (!(function_exists('smtp_send') && smtp_send($email, $subjConfirm, $bodyConfirm, $FROM_NAME, null, array('Auto-Submitted: auto-generated')))) {
     @mail($email, '=?UTF-8?B?' . base64_encode($subjConfirm) . '?=', $bodyConfirm, implode("\r\n", $headersConfirm), '-f' . $FROM_ADDR);
   }
