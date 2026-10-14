@@ -35,7 +35,7 @@ die persönliche Website markuswagner.live (Repo `KlarheitBeratungen/markuswagne
 - Netto → Endpreis: Lichtblick 60 Min 108 → **129 €**, 90 Min 150 → **179 €** · Überblick 3 × 90 Min 430 → **512 €** · Durchblick 6 × 90 Min 820 → **976 €** · Klarheit 10 × 90 Min 1.250 → **1.488 €**.
 - Paketnamen in dieser Reihenfolge (Markus' Wahl): Lichtblick · Überblick · Durchblick · **Klarheit** (höchste Stufe). Kein „Einblick“.
 - Das Formular hat kein Feld „Anrede“ mehr (beim Duzen überflüssig).
-- Konditionen (Markus, 14.10.2026), Kasten „Gut zu wissen“ unter den Paketen: Termindichte frei wählbar, Paket läuft längstens so viele Monate, wie es Termine hat (3/6/10 Monate) · Bezahlung per Rechnung · Absage am Vortag bis 18 Uhr: 70 % des Terminpreises, am selben Tag oder Nichterscheinen: 100 %.
+- Konditionen (Markus, 14.10.2026), Kasten „Gut zu wissen“ unter den Paketen: Termindichte frei wählbar, Paket läuft längstens so viele Monate, wie es Termine hat (3/6/10 Monate) · Bezahlung per Rechnung · Absage mindestens 2 Werktage vorher, sonst entfällt der Termin und 75 % des Honorars für diesen Termin werden fällig (auch bei Nichterscheinen).
 - Angezeigt werden Paketpreis, „rund … € pro Termin“ (gerundet) und „Sie sparen … €“ gegenüber 179 € je Einzeltermin. Keine Stundensätze. Erstgespräch bis 45 Min bleibt kostenlos.
 
 ## Technik
