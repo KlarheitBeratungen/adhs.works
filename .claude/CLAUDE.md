@@ -1,0 +1,36 @@
+# adhs.works – Arbeitsregeln für Claude
+
+Website für ADHS-Coaching für Erwachsene von Markus Wagner (Münster). Eigenständiges Projekt
+innerhalb von Klarheit Beratungen. Seiten: index (eine lange Startseite) · impressum · datenschutz · 404.
+Die Beratungs-Website ist klarheit-beratungen.de (Repo `KlarheitBeratungen/klarheit-beratungen.de`),
+die persönliche Website markuswagner.live (Repo `KlarheitBeratungen/markuswagner.live`).
+
+## Zusammenarbeit
+- Markus auf Deutsch und mit „du“ ansprechen. Auf der Website selbst gilt „Sie“.
+- Er ist kein Entwickler: Ergebnisse knapp und ohne Fachjargon erklären.
+- **Veröffentlicht wird erst, wenn Markus „umsetzen“ o. ä. sagt.**
+
+## Veröffentlichen
+- Hostinger holt jeden Stand von `main` automatisch nach `public_html` (Hostinger-GitHub-App), sobald die Website adhs.works in Hostinger mit diesem Repo verbunden ist.
+- **Cloud-Sitzung:** Änderung auf dem Arbeitszweig pushen und einen Pull Request erstellen. Markus führt ihn auf GitHub zusammen, erst dann ist die Änderung online.
+- **Lokal auf Markus' PC:** vor jeder Arbeit `git pull`; nach „umsetzen“ `git push origin main`.
+- Danach live prüfen: Seiten laden (HTTP 200, neuer Inhalt da). Das Terminplaner-Skript nur ohne Mailversand prüfen: GET → 405, POST `{}` → 422, POST `{"website":"x"}` → `{"ok":true}`. **Nie echte Test-Mails oder Testbuchungen verschicken**, die macht Markus selbst.
+
+## Harte Regeln
+1. **Trennung der Auftritte:** Von klarheit-beratungen.de und markuswagner.live führt kein Link hierher, dort kommt ADHS nirgends vor. Hier gibt es keinen Link dorthin und kein Klarheit-Logo. Klarheit Beratungen steht nur dezent in der Fußzeile („Ein Angebot von Klarheit Beratungen“) sowie, weil gesetzlich nötig, in Impressum und Datenschutz. Keine `sameAs`- oder `parentOrganization`-Verweise in den strukturierten Daten.
+2. **Überall, wo man ein Erstgespräch anfragen kann, gibt es den Terminplaner mit Kalender**, nie nur einen Button.
+3. **Design für Menschen mit ADHS:** eine Botschaft pro Abschnitt, kurze Absätze, „Kurz gesagt“-Kasten oben, nummerierte Abschnitte mit Sprungmarken, am Ende jedes Abschnitts ein klarer nächster Schritt. Keine Animationen, Karussells, Pop-ups oder automatisch startenden Medien. Kontraste mindestens 4,5 : 1, deutliche Fokus-Rahmen.
+4. Responsiv bauen (Handy ab 375 px ohne seitliches Überlaufen) und vor dem Veröffentlichen prüfen.
+5. **Keine Heilversprechen.** Coaching ist keine Heilbehandlung, ersetzt keine Diagnose, Therapie oder Medikation. Keine Behauptungen über Markus' Qualifikation oder Erfahrung mit ADHS, die er nicht selbst geliefert hat.
+
+## Technik
+- Statisches HTML/CSS/Vanilla-JS ohne Build. Design-System: `assets/css/style.css` (Indigo `#4338ca` + Bernstein `#f2a93b` auf warmem Papierton). Schriften lokal: Atkinson Hyperlegible (Text) und Lexend (Überschriften), beide SIL OFL.
+- Cache: HTML wird nicht zwischengespeichert, CSS/JS dagegen lange. **Bei jeder Änderung an `booking.js` oder `style.css` die `?v=`-Nummer in allen Seiten hochzählen, die die Datei einbinden** (Stand: `style.css?v=1` in allen 4 Seiten, `booking.js?v=1` in index.html; in `404.html` stehen die Pfade mit führendem `/`).
+- Terminplaner: `assets/js/booking.js` → `send-booking.php` → Mail an wagner@klarheit-beratungen.de und automatische Eingangsbestätigung an den Anfragenden. Es gibt nur ein Anliegen, `Erstgespräch Coaching`. **Wird das Label oder das Terminformat in booking.js geändert, muss `$AREAS`/`$WHEN_RE` in send-booking.php mitgeändert werden**, sonst entfällt die Bestätigung stillschweigend. Die Bestätigung enthält bewusst weder Freitext noch das Wort „ADHS“ (falls jemand eine fremde Adresse einträgt).
+- **Einwilligung (Art. 9 DSGVO):** Eine Anfrage für ADHS-Coaching kann Gesundheitsdaten enthalten. Das Häkchen im Formular ist Pflicht und wird in send-booking.php geprüft (ohne → 422). Die Datenschutzerklärung (Ziffer 5 und 6) beschreibt das; bei Änderungen am Formular mitprüfen.
+- Versand per SMTP über `smtp-mail.php` (gleiche Datei wie auf klarheit-beratungen.de), bei Fehlern Rückfall auf PHP `mail()`. Die Zugangsdaten stehen in `mail-config.php` **außerhalb** von public_html auf dem Server: nie ins Repo, nie nach Passwörtern fragen oder sie eintragen.
+- `.htaccess`: HTTPS- und www-Weiterleitung, Sicherheits-Header mit CSP (`script-src 'self'` → kein Inline-JavaScript), jeder Pfad mit Punkt am Anfang → 403 (nur `.well-known` bleibt frei).
+- Bilder: `logo.svg` (Kopf und Browser-Symbol), `favicon.png` und `logo-180.png` als Ersatz, `og-image.png` als Vorschaubild für geteilte Links.
+
+## Nicht ins Repo
+`.claude/` (außer dieser Datei), `ausserhalb-public_html/`, Passwörter, `*.log`.
