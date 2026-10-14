@@ -28,9 +28,16 @@ die persönliche Website markuswagner.live (Repo `KlarheitBeratungen/markuswagne
    - **Verbotene Wörter und Motive:** „Strategie/Strategien“ (Markus' Vorgabe), Symptome als Erkennungsliste („Kommt Ihnen das bekannt vor?“), Aufschieben, Fokus/Konzentration, Zeitgefühl, Reize, Überforderung, Erschöpfung, Energie, Hyperfokus, Muster, „Ihr Kopf“, „mit Ihrem ADHS arbeiten“, Aussagen über das Wesen von ADHS, Heil- oder Erfolgsversprechen, „ergänzt die Therapie“, „Rezept“. Die Wörter Diagnose, Therapie, Behandlung, Beschwerden, Symptome nur in Abgrenzungs-Sätzen.
    - Keine Behauptungen über Markus' Qualifikation oder Erfahrung mit ADHS, die er nicht selbst geliefert hat.
 
+## Preise (Stand 14.10.2026)
+- Abschnitt „Pakete und Preise“ (`#preise`) auf der Startseite, dazu die FAQ „Was kostet das Coaching?“. Bei Änderungen beide Stellen pflegen.
+- Kundschaft sind Privatpersonen: **nur Endpreise inkl. 19 % USt.** (Preisangabenverordnung), auf volle Euro aufgerundet (Markus' Vorgabe). Markus ist regelbesteuert.
+- Netto → Endpreis: Lichtblick 60 Min 108 → **129 €**, 90 Min 150 → **179 €** · Überblick 3 × 90 Min 430 → **512 €** · Durchblick 6 × 90 Min 820 → **976 €** · Klarheit 10 × 90 Min 1.250 → **1.488 €**.
+- Paketnamen in dieser Reihenfolge (Markus' Wahl): Lichtblick · Überblick · Durchblick · **Klarheit** (höchste Stufe). Kein „Einblick“.
+- Angezeigt werden Paketpreis, „rund … € pro Termin“ (gerundet) und „Sie sparen … €“ gegenüber 179 € je Einzeltermin. Keine Stundensätze. Erstgespräch bis 45 Min bleibt kostenlos.
+
 ## Technik
 - Statisches HTML/CSS/Vanilla-JS ohne Build. Design-System: `assets/css/style.css` (Indigo `#4338ca` + Bernstein `#f2a93b` auf warmem Papierton). Schriften lokal: Atkinson Hyperlegible (Text) und Lexend (Überschriften), beide SIL OFL.
-- Cache: HTML wird nicht zwischengespeichert, CSS/JS dagegen lange. **Bei jeder Änderung an `booking.js` oder `style.css` die `?v=`-Nummer in allen Seiten hochzählen, die die Datei einbinden** (Stand: `style.css?v=2` in allen 4 Seiten, `booking.js?v=2` in index.html, `og-image.png?v=3`; in `404.html` stehen die Pfade mit führendem `/`).
+- Cache: HTML wird nicht zwischengespeichert, CSS/JS dagegen lange. **Bei jeder Änderung an `booking.js` oder `style.css` die `?v=`-Nummer in allen Seiten hochzählen, die die Datei einbinden** (Stand: `style.css?v=3` in allen 4 Seiten, `booking.js?v=2` in index.html, `og-image.png?v=3`; in `404.html` stehen die Pfade mit führendem `/`).
 - Terminplaner: `assets/js/booking.js` → `send-booking.php` → Mail an wagner@klarheit-beratungen.de und automatische Eingangsbestätigung an den Anfragenden. Es gibt nur ein Anliegen, `Erstgespräch Coaching`. **Wird das Label oder das Terminformat in booking.js geändert, muss `$AREAS`/`$WHEN_RE` in send-booking.php mitgeändert werden**, sonst entfällt die Bestätigung stillschweigend. Die Bestätigung enthält bewusst weder Freitext noch das Wort „ADHS“ (falls jemand eine fremde Adresse einträgt).
 - **Einwilligung (Art. 9 DSGVO):** Eine Anfrage für ADHS-Coaching kann Gesundheitsdaten enthalten. Das Häkchen im Formular ist Pflicht und wird in send-booking.php geprüft (ohne → 422). Die Datenschutzerklärung (Ziffer 5 und 6) beschreibt das; bei Änderungen am Formular mitprüfen.
 - Versand per SMTP über `smtp-mail.php` (gleiche Datei wie auf klarheit-beratungen.de), bei Fehlern Rückfall auf PHP `mail()`. Die Zugangsdaten stehen in `mail-config.php` **außerhalb** von public_html auf dem Server: nie ins Repo, nie nach Passwörtern fragen oder sie eintragen.

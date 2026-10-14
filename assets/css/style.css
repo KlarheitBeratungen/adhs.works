@@ -302,6 +302,30 @@ img{max-width:100%;height:auto;display:block;}
   .btn{width:100%;justify-content:center;}
 }
 
+/* ---------- Pakete und Preise ---------- */
+.packages{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.package{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 22px;}
+.package h3{font-size:1.4rem;margin:0 0 2px;}
+.package .scope{color:var(--indigo-dark);font-weight:700;margin:0 0 10px;}
+.package .desc{color:var(--ink-soft);font-size:1rem;line-height:1.55;margin:0 0 18px;}
+.package .bottom{margin-top:auto;border-top:1px dashed var(--border-strong);padding-top:14px;}
+.package .price{font-family:var(--font-head);font-weight:700;font-size:2.1rem;line-height:1.1;margin:0 0 4px;color:var(--ink);}
+.package .per{color:var(--muted);font-size:.95rem;margin:0;}
+.package .save{display:inline-block;margin:10px 0 0;background:var(--amber-soft);color:var(--ink);font-weight:700;font-size:.9rem;padding:4px 12px;border-radius:999px;}
+.package .price-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 4px;}
+.package .price-row span{color:var(--muted);}
+.package .price-row strong{font-family:var(--font-head);font-size:1.7rem;color:var(--ink);}
+.package.top{background:var(--indigo-deep);border-color:var(--indigo-deep);}
+.package.top h3,.package.top .price{color:#fff;}
+.package.top .scope{color:var(--amber);}
+.package.top .desc,.package.top .per{color:rgba(255,255,255,.86);}
+.package.top .bottom{border-top-color:rgba(255,255,255,.28);}
+.package.top .save{background:var(--amber);}
+.packages-note{color:var(--muted);font-size:.95rem;margin:1.4rem 0 0;max-width:var(--measure);}
+.section-alt .faq details{background:var(--bg);}
+@media (max-width:900px){.packages{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:680px){.packages{grid-template-columns:1fr;}}
+
 /* Weniger Bewegung, wenn das Gerät es so eingestellt hat */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
