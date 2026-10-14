@@ -10,7 +10,7 @@
    mit JSON {ok:true}. Schlägt der Versand fehl, bietet die Seite als
    Fallback eine vorbereitete mailto-Anfrage an.
 
-   EINWILLIGUNG: Schon die Anfrage für ein ADHS-Coaching lässt Rückschlüsse
+   EINWILLIGUNG: Schon eine Anfrage über adhs.works lässt Rückschlüsse
    auf die Gesundheit zu (Art. 9 DSGVO). Deshalb ist das Häkchen Pflicht;
    send-booking.php prüft es ebenfalls.
 
@@ -206,7 +206,7 @@
       '<div class="field"><label for="bk-tel">Telefon <span class="opt">(optional)</span></label><input id="bk-tel" type="tel" autocomplete="tel" maxlength="40" placeholder="Für Rückfragen und das Erstgespräch" /></div>' +
       '<div class="field"><label for="bk-msg">Was möchten Sie angehen? <span class="opt">(optional)</span></label>' +
         '<textarea id="bk-msg" placeholder="Ein, zwei Stichworte reichen."></textarea>' +
-        '<p class="field-hint">Bitte keine Befunde oder Diagnosen – darüber sprechen wir lieber im Gespräch.</p></div>' +
+        '<p class="field-hint">Bitte keine Angaben zu Gesundheit, Befunden oder Diagnosen. Coaching ist keine Therapie.</p></div>' +
       '<div class="field"><label class="consent" for="bk-consent"><input id="bk-consent" type="checkbox" />' +
         '<span>Ich bin einverstanden, dass meine Angaben – auch solche, die Rückschlüsse auf meine Gesundheit zulassen – zur Bearbeitung meiner Anfrage verarbeitet werden. Widerruf jederzeit per E-Mail. *</span></label>' +
         '<div class="err">Bitte bestätigen Sie die Einwilligung, damit ich Ihre Anfrage bearbeiten darf.</div></div>' +

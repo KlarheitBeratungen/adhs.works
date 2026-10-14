@@ -62,7 +62,7 @@ if (count($fields) > 0) {
 
 $now = new DateTime('now', new DateTimeZone('Europe/Berlin'));
 
-$subject = 'Terminanfrage ADHS-Coaching (adhs.works)';
+$subject = 'Terminanfrage Coaching (adhs.works)';
 $body =
   "Neue Terminanfrage über adhs.works\n" .
   "----------------------------------\n\n" .

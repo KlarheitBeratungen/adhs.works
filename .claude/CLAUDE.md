@@ -1,6 +1,6 @@
 # adhs.works – Arbeitsregeln für Claude
 
-Website für ADHS-Coaching für Erwachsene von Markus Wagner (Münster). Eigenständiges Projekt
+Website für Coaching für Erwachsene mit ADHS von Markus Wagner (Münster). Eigenständiges Projekt
 innerhalb von Klarheit Beratungen. Seiten: index (eine lange Startseite) · impressum · datenschutz · 404.
 Die Beratungs-Website ist klarheit-beratungen.de (Repo `KlarheitBeratungen/klarheit-beratungen.de`),
 die persönliche Website markuswagner.live (Repo `KlarheitBeratungen/markuswagner.live`).
@@ -21,11 +21,15 @@ die persönliche Website markuswagner.live (Repo `KlarheitBeratungen/markuswagne
 2. **Überall, wo man ein Erstgespräch anfragen kann, gibt es den Terminplaner mit Kalender**, nie nur einen Button.
 3. **Design für Menschen mit ADHS:** eine Botschaft pro Abschnitt, kurze Absätze, „Kurz gesagt“-Kasten oben, nummerierte Abschnitte mit Sprungmarken, am Ende jedes Abschnitts ein klarer nächster Schritt. Keine Animationen, Karussells, Pop-ups oder automatisch startenden Medien. Kontraste mindestens 4,5 : 1, deutliche Fokus-Rahmen.
 4. Responsiv bauen (Handy ab 375 px ohne seitliches Überlaufen) und vor dem Veröffentlichen prüfen.
-5. **Keine Heilversprechen.** Coaching ist keine Heilbehandlung, ersetzt keine Diagnose, Therapie oder Medikation. Keine Behauptungen über Markus' Qualifikation oder Erfahrung mit ADHS, die er nicht selbst geliefert hat.
+5. **Abgrenzung zu Heilkunde und Psychotherapie (Heilpraktikergesetz, Psychotherapeutengesetz, Heilmittelwerbegesetz).** Markus hat keine Heilerlaubnis. Die Website darf nicht den Eindruck erwecken, es gehe um Feststellung, Heilung oder Linderung von ADHS.
+   - Gegenstand des Coachings sind berufliche und persönliche **Ziele** (Beruf, Arbeitsumfeld, Studium, Alltagsorganisation, Entscheidungen, Stärken). ADHS beschreibt nur die Zielgruppe, nie den Gegenstand: „Coaching für Erwachsene mit ADHS“, nicht „ADHS-Coaching“.
+   - Klar und an mehreren Stellen sagen: **keine Therapie, keine Behandlung von Beschwerden, Symptomen oder ADHS-bedingten Problemen, keine Diagnosen** (Kasten „Wichtig: Coaching ist keine Therapie“ unter „Kurz gesagt“, Hero, FAQ „Ist das eine Therapie?“, Fußzeile aller Seiten, Impressum, Hinweis im Formular).
+   - **Verbotene Wörter und Motive:** „Strategie/Strategien“ (Markus' Vorgabe), Symptome als Erkennungsliste („Kommt Ihnen das bekannt vor?“), Aufschieben, Fokus/Konzentration, Zeitgefühl, Reize, Überforderung, Erschöpfung, Energie, Hyperfokus, Muster, „Ihr Kopf“, „mit Ihrem ADHS arbeiten“, Aussagen über das Wesen von ADHS, Heil- oder Erfolgsversprechen, „ergänzt die Therapie“, „Rezept“. Die Wörter Diagnose, Therapie, Behandlung, Beschwerden, Symptome nur in Abgrenzungs-Sätzen.
+   - Keine Behauptungen über Markus' Qualifikation oder Erfahrung mit ADHS, die er nicht selbst geliefert hat.
 
 ## Technik
 - Statisches HTML/CSS/Vanilla-JS ohne Build. Design-System: `assets/css/style.css` (Indigo `#4338ca` + Bernstein `#f2a93b` auf warmem Papierton). Schriften lokal: Atkinson Hyperlegible (Text) und Lexend (Überschriften), beide SIL OFL.
-- Cache: HTML wird nicht zwischengespeichert, CSS/JS dagegen lange. **Bei jeder Änderung an `booking.js` oder `style.css` die `?v=`-Nummer in allen Seiten hochzählen, die die Datei einbinden** (Stand: `style.css?v=1` in allen 4 Seiten, `booking.js?v=1` in index.html; in `404.html` stehen die Pfade mit führendem `/`).
+- Cache: HTML wird nicht zwischengespeichert, CSS/JS dagegen lange. **Bei jeder Änderung an `booking.js` oder `style.css` die `?v=`-Nummer in allen Seiten hochzählen, die die Datei einbinden** (Stand: `style.css?v=2` in allen 4 Seiten, `booking.js?v=2` in index.html, `og-image.png?v=2`; in `404.html` stehen die Pfade mit führendem `/`).
 - Terminplaner: `assets/js/booking.js` → `send-booking.php` → Mail an wagner@klarheit-beratungen.de und automatische Eingangsbestätigung an den Anfragenden. Es gibt nur ein Anliegen, `Erstgespräch Coaching`. **Wird das Label oder das Terminformat in booking.js geändert, muss `$AREAS`/`$WHEN_RE` in send-booking.php mitgeändert werden**, sonst entfällt die Bestätigung stillschweigend. Die Bestätigung enthält bewusst weder Freitext noch das Wort „ADHS“ (falls jemand eine fremde Adresse einträgt).
 - **Einwilligung (Art. 9 DSGVO):** Eine Anfrage für ADHS-Coaching kann Gesundheitsdaten enthalten. Das Häkchen im Formular ist Pflicht und wird in send-booking.php geprüft (ohne → 422). Die Datenschutzerklärung (Ziffer 5 und 6) beschreibt das; bei Änderungen am Formular mitprüfen.
 - Versand per SMTP über `smtp-mail.php` (gleiche Datei wie auf klarheit-beratungen.de), bei Fehlern Rückfall auf PHP `mail()`. Die Zugangsdaten stehen in `mail-config.php` **außerhalb** von public_html auf dem Server: nie ins Repo, nie nach Passwörtern fragen oder sie eintragen.
