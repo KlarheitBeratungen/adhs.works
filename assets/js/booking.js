@@ -37,7 +37,7 @@
   // sonst entfällt die Eingangsbestätigung. Bewusst ohne „ADHS“: Das Label
   // steht auch in der Bestätigungsmail.
   var AREAS = [
-    { id: 'coaching', label: 'Erstgespräch Coaching', note: 'Telefonisch oder per Video', duration: 45 }
+    { id: 'coaching', label: 'Erstgespräch Coaching', note: 'Telefonisch oder per Video', duration: 30 }
   ];
 
   // Feste Vorauswahl auf Unterseiten (data-area) -> Kalender startet direkt.
