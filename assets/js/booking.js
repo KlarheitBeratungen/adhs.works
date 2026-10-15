@@ -25,7 +25,7 @@
 
   // ---------------------------- Konfiguration ----------------------------
   var CONFIG = {
-    email: 'wagner@klarheit-beratungen.de',
+    email: 'markus@adhs.works',
     useGoogleCalendar: false,               // TODO: true, sobald Google-Kalender angebunden ist
     weeksAhead: 4,                           // wie viele Wochen im Voraus buchbar sind
     morningGrid: ['09:30', '09:45', '10:00', '10:15', '10:30', '10:45', '11:00', '11:15', '11:30'],

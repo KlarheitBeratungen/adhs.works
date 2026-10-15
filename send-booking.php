@@ -16,11 +16,11 @@ header('X-Content-Type-Options: nosniff');
 try { if (is_file(__DIR__ . '/smtp-mail.php')) { require_once __DIR__ . '/smtp-mail.php'; } } catch (Throwable $e) {}
 
 // --- Empfänger & Absender ------------------------------------------
-// Absender = echtes Postfach (SPF/DKIM/DMARC bei Hostinger vorhanden).
-// Gibt es später ein eigenes Postfach @adhs.works, hier und in booking.js
-// (CONFIG.email) umstellen.
-$TO        = 'wagner@klarheit-beratungen.de';
-$FROM_ADDR = 'wagner@klarheit-beratungen.de';
+// Postfach markus@adhs.works (auch in booking.js, CONFIG.email). Beim
+// SMTP-Versand ist der Absender das Postfach aus mail-config.php; die
+// Adresse hier gilt für den Rückfall auf mail().
+$TO        = 'markus@adhs.works';
+$FROM_ADDR = 'markus@adhs.works';
 $FROM_NAME = 'Markus Wagner';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
