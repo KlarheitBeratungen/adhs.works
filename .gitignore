@@ -1,0 +1,7 @@
+# Nur auf diesem PC - gehoert nicht auf den Server
+.claude/*
+!.claude/CLAUDE.md
+ausserhalb-public_html/
+desktop.ini
+Thumbs.db
+*.log
