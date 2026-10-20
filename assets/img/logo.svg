@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="adhs.works">
+  <rect width="64" height="64" rx="16" fill="#4338ca"/>
+  <rect x="14" y="16" width="36" height="7" rx="3.5" fill="#ffffff"/>
+  <rect x="14" y="28.5" width="26" height="7" rx="3.5" fill="#ffffff"/>
+  <rect x="14" y="41" width="16" height="7" rx="3.5" fill="#f2a93b"/>
+  <circle cx="42" cy="44.5" r="4.5" fill="#f2a93b"/>
+</svg>
